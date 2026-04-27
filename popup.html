@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Costco Bulk Adder</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header id="userCard" class="user-card hidden">
+    <span class="user-avatar" id="userAvatar"></span>
+    <div class="user-meta">
+      <div class="user-name" id="userName"></div>
+      <div class="user-email" id="userEmail"></div>
+      <div class="user-tier" id="userTier"></div>
+    </div>
+  </header>
+  <h1>Costco Sauce</h1>
+  <div id="status" class="status"></div>
+
+  <nav class="tabs">
+    <button class="tab" data-tab="manage">Manage</button>
+    <button class="tab active" data-tab="remote">Remote</button>
+  </nav>
+
+  <div class="tab-panel hidden" data-panel="manage">
+    <section>
+      <div class="row between">
+        <label>Your lists</label>
+        <button id="refreshManage" title="Reload">↻</button>
+      </div>
+      <div id="manageLists" class="manage-lists"><div class="muted">Loading…</div></div>
+    </section>
+    <section class="log-section">
+      <button type="button" class="log-toggle" aria-expanded="false" aria-controls="manageLog">
+        <span>Activity log</span>
+        <span class="caret" aria-hidden="true">▶</span>
+      </button>
+      <div id="manageLog" class="hidden"></div>
+    </section>
+  </div>
+
+  <div class="tab-panel" data-panel="remote">
+    <section id="remoteUnregistered" class="hidden">
+      <div class="muted">Not linked to the server. Open costco.com and sign in to continue.</div>
+      <div id="registerError" class="status err hidden"></div>
+      <button id="registerBtn" class="primary">Register with admin</button>
+    </section>
+
+    <section id="remotePending" class="hidden">
+      <div class="muted">Waiting for admin approval.</div>
+      <div class="remote-row">
+        <span class="remote-label">Token</span>
+        <span id="pendingToken" class="remote-value mono">—</span>
+      </div>
+      <div class="remote-row">
+        <span class="remote-label">Expires</span>
+        <span id="pendingExpiry" class="remote-value">—</span>
+      </div>
+      <div class="remote-row">
+        <span class="remote-label">Status</span>
+        <span id="pendingState" class="remote-value">—</span>
+      </div>
+      <div class="row">
+        <button id="refreshPending">Refresh</button>
+        <button id="copyPendingToken">Copy token</button>
+        <button id="cancelPending" class="danger">Cancel</button>
+      </div>
+    </section>
+
+    <section id="remoteRegistered" class="hidden">
+      <div class="remote-row">
+        <span class="remote-label">Status</span>
+        <span id="remoteStatusDot" class="dot"></span>
+        <span id="remoteStatusText" class="remote-value">…</span>
+      </div>
+      <div class="remote-row">
+        <span class="remote-label">Costco sign-in</span>
+        <span id="remoteCostco" class="remote-value">—</span>
+      </div>
+      <div class="remote-row">
+        <span class="remote-label">Last refresh</span>
+        <span id="remoteHeartbeat" class="remote-value">—</span>
+      </div>
+      <div class="remote-row">
+        <span class="remote-label">Token expires</span>
+        <span id="remoteTokenExpires" class="remote-value">—</span>
+      </div>
+      <div class="remote-row">
+        <span class="remote-label">Client ID</span>
+        <span id="remoteUuid" class="remote-value mono small">—</span>
+      </div>
+    </section>
+
+    <section id="remoteControls" class="hidden">
+      <label class="switch-row">
+        <span>Pause remote control</span>
+        <input id="pauseToggle" type="checkbox">
+      </label>
+      <div class="row">
+        <button id="heartbeatNow">Refresh</button>
+        <button id="resetBtn" class="danger">Reset registration</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

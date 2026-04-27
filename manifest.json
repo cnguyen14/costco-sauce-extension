@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Costco Bulk Add to List",
+  "version": "1.2.0",
+  "description": "Bulk add SKU/UPC items to a Costco list and manage your lists in one click.",
+  "permissions": ["activeTab", "storage", "alarms", "tabs"],
+  "host_permissions": [
+    "https://www.costco.com/*",
+    "https://api.digital.costco.com/*",
+    "https://gdx-api.costco.com/*",
+    "https://*/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Costco Bulk Adder",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.costco.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://www.costco.com/*"],
+      "js": ["inject.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    }
+  ]
+}
