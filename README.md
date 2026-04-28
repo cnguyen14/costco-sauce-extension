@@ -11,12 +11,16 @@ It reuses your existing `costco.com` browser session — no login, no password, 
 
 ## Install
 
-1. Open `chrome://extensions`.
-2. Enable **Developer mode** (top right).
-3. Click **Load unpacked** → select this `extension/` folder.
-4. Pin the extension for one-click access.
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/cnguyen14/costco-sauce-extension.git
+   ```
+2. Open `chrome://extensions`.
+3. Enable **Developer mode** (top right).
+4. Click **Load unpacked** → select the cloned `costco-sauce-extension/` folder.
+5. Pin the extension for one-click access.
 
-After editing source files, reload the extension card *and* refresh any open `costco.com` tab.
+To update later: `git pull` inside the folder, then click the reload icon on the extension card. Refresh any open `costco.com` tab as well — content scripts don't auto-reinject.
 
 ## Usage
 
